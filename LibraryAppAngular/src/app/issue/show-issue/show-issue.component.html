@@ -1,0 +1,55 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()" data-backdrop="static" data-keybord="false"
+>
+    Add Issue
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{Modaltitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" ></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-issue [issue]="issue" *ngIf="ActivateAddEditIssue"></app-add-edit-issue>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead class="table-light">
+     <tr>
+         <th><div class="d-flex flex-row">
+          <input [(ngModel)]="ByIdFilter" class="form-control"
+          (keyup)="FilterFn()" placeholder="Filter By Id"></div>Issue Id</th>
+         <th> <div class="d-flex flex-row">
+          <input [(ngModel)]="ByNameFilter" class="form-control"
+          (keyup)="FilterFn()" placeholder="Filter By Id"></div>Student Id</th>
+         <th>Book Id</th>
+         <th>Message</th>
+         
+         
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of IssueList">
+          <td>{{dataItem.issueId}}</td>
+          <td>{{dataItem.studentId}}</td>
+          <td>{{dataItem.bookId}}</td>
+          <td>{{dataItem.message}}</td>
+          
+         
+          <td>
+              <button type="button" class="btn btn-primary float-right m-2"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="editClick(dataItem)" >Edit</button>
+              <button type="button" class="btn btn-light mr-1" (click)="deletelick(dataItem)"  >Delete</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>

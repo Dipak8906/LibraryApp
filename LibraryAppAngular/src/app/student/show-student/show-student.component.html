@@ -1,0 +1,56 @@
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()" data-keyboard="false">
+   Add Student
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{Modaltitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-student [student]="student" *ngIf="activateAddEditStudentComp"></app-add-edit-student>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<table class="table table-striped">
+    <thead class="table-light">
+     <tr>
+         <th>Student Id</th>
+         <th>Student Name</th>
+         <th>Email</th>
+         <th>Father Name</th>
+         <th>Phone</th>
+         <th>Address</th>
+         <th>Class</th>
+         <th>RollNo</th>
+         <th>Option</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of StudentList">
+          <td>{{dataItem.studentId}}</td>
+          <td>{{dataItem.studentName}}</td>
+          <td>{{dataItem.studentEmail}}</td>
+          <td>{{dataItem.fatherName}}</td>
+          <td>{{dataItem.phone}}</td>
+          <td>{{dataItem.address}}</td>
+          <td>{{dataItem.class}}</td>
+          <td>{{dataItem.rollNo}}</td>
+          <td>
+            <button type="button" class="btn btn-primary  m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="editClick(dataItem)" data-keyboard="false" >Edit</button>
+            <button (click)="deleteClick(dataItem)"   type="button" class="btn btn-light mr-1" >Delete</button>
+       </td>
+      </tr>
+    </tbody>
+  </table>

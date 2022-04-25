@@ -1,0 +1,53 @@
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()" data-keyboard="false">
+   Add Faculty
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{Modaltitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-faculty [faculty]="faculty" *ngIf="activateAddEditFacultyComp"></app-add-edit-faculty>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<table class="table table-striped">
+    <thead class="table-light">
+     <tr>
+         <th>Faculty Id</th>
+         <th>Faculty Name</th>
+         <th>Email</th>
+         <th>Phone</th>
+         <th>Address</th>
+         <th>Designation Id</th>
+         
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of FacultyList">
+          <td>{{dataItem.facultyId}}</td>
+          <td>{{dataItem.facultyName}}</td>
+          <td>{{dataItem.facultyEmail}}</td>
+          <td>{{dataItem.facultyPhone}}</td>
+          <td>{{dataItem.facultyAddress}}</td>
+          <td>{{dataItem.designationId}}</td>
+         
+          <td>
+            <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="editClick(dataItem)" data-keyboard="false" >Edit</button>
+            <button (click)="deleteClick(dataItem)"   type="button" class="btn btn-light mr-1" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
