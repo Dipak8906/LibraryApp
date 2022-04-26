@@ -50,9 +50,9 @@ namespace LibraryManagementSystem.Controllers
 
         // PUT api/<EBookController>/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Ebook eBook)
+        public async Task<IActionResult> UpdateEbookAsync([FromBody] Ebook eBook)
         {
-            Ebook eBook1 = await _eBook.UpdateEbookAsync(eBook);
+            var eBook1 = await _eBook.UpdateEbookAsync(eBook);
             if (eBook1 == null)
             {
                 return NotFound("Not found the EBook");

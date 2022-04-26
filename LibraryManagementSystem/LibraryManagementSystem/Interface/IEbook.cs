@@ -11,7 +11,7 @@ namespace LibraryManagementSystem.Interface
         Task<IEnumerable<Ebook>> GetEbookAsync();
         Task<Ebook> GetEbook(int eBookId);
         Task AddEbook(Ebook eBook);
-        Task<Ebook> UpdateEbookAsync(Ebook eBookId);
+        Task<Ebook> UpdateEbookAsync(Ebook eBook);
         Task DeleteEbookAsync(int eBookId);
     }
 }

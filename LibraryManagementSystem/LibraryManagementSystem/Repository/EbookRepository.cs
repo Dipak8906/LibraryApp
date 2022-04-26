@@ -47,6 +47,7 @@ namespace LibraryManagementSystem.Repository
         {
             var bk = new Ebook()
             {
+                EbookId=eBook.EbookId,
                 EbookName=eBook.EbookName,
                 ISBN=eBook.ISBN,
                 Description=eBook.Description,

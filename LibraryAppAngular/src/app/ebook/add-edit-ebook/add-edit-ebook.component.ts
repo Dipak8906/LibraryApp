@@ -11,7 +11,7 @@ export class AddEditEBookComponent implements OnInit {
   constructor(private service:SharedService) { }
   @Input() eBook:any;
   eBookId?:number;
-  eBookName?:string;
+  ebookName?:string;
   isbn?:string;
   description?:string;
   publisher?:string;
@@ -19,7 +19,7 @@ export class AddEditEBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.eBookId=this.eBook.eBookId;
-    this.eBookName=this.eBook.eBookName;
+    this.ebookName=this.eBook.eBookName;
     this.isbn=this.eBook.isbn;
     this.description=this.eBook.description;
     this.publisher=this.eBook.publisher;
@@ -28,25 +28,25 @@ export class AddEditEBookComponent implements OnInit {
   AddEBook(){
     var val={
       eBookId:this.eBookId,
-      eBookName:this.eBookName,
+      eBookName:this.ebookName,
       isbn:this.isbn,
       description:this.description,
       publisher:this.publisher,
       author:this.author
     };
-    this.service.addEBook(val).subscribe(res=>{alert(res.toString());});
+    this.service.addEBook(val).subscribe(res=>{alert("Added");});
   }
   UpdateEBook()
   {
     var val={
       eBookId:this.eBookId,
-      eBookName:this.eBookName,
+      eBookName:this.ebookName,
       isbn:this.isbn,
       description:this.description,
       publisher:this.publisher,
       author:this.author
     };
-    this.service.updateEBook(val).subscribe(res=>{alert(res.toString());});
+    this.service.updateEBook(val).subscribe(res=>{alert("Updated");});
   }
 
 }
